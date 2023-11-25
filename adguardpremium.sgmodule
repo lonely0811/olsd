@@ -1,0 +1,7 @@
+#!name=adguard premium
+#!desc=haikieu557
+
+[Script]
+http-response ^https:\/\/mobile-api\.adguard\.com\/api\/1\.0\/ios_validate_receipt$ script-path=302 https://raw.githubusercontent.com/NobyDa/Scripting/master/Adguard.rsp
+[MITM]
+hostname= %APPEND% mobile-api.adguard.com
