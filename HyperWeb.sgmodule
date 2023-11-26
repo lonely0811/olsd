@@ -1,6 +1,6 @@
 #name= Hyperweb
 #desc= Active 2099 - hk557
 [Script]
-Hyperweb = type=http-response,pattern=^https?:\/\/zy6kcqa01a\.execute-api\.us-east-2\.amazonaws\.com\/prod\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/Hyperweb.js
+Hyperweb = type=http-response,pattern=^https?:\/\/zy6kcqa01a\.execute-api\.us-east-2\.amazonaws\.com\/prod\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/hyperweb.js
 [MITM]
 # hostname = zy6kcqa01a.execute-api.us-east-2.amazonaws.com
