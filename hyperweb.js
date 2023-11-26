@@ -1,5 +1,5 @@
 [rewrite_local]
-https?:\/\/zy6kcqa01a\.execute-api\.us-east-2\.amazonaws\.com\/prod\/verifyReceipt url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/Hyperweb.js
+https?:\/\/zy6kcqa01a\.execute-api\.us-east-2\.amazonaws\.com\/prod\/verifyReceipt url script-response-body https://raw.githubusercontent.com/lonely0811/olsd/main/hyperweb.js
 
 [mitm]
 hostname = zy6kcqa01a.execute-api.us-east-2.amazonaws.com
