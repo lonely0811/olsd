@@ -7,4 +7,4 @@ RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hosts
 #RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rewrite.conf,REJECT-TINYGIF,update-interval=21600
 #RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/adult/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
 RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/gambling/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
-RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/threat/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
+#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/threat/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
