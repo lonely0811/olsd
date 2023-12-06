@@ -233,7 +233,7 @@ HOST,guzzoni.apple.com,Apple
 HOST,beta.apple.com,Apple
 HOST,testflight.apple.com,Apple
 HOST,www-cdn.icloud.com.akadns.net,Apple
-HOST-SUFFIX,push.apple.com,Apple
+HOST-SUFFIX,apple.com,Apple
 HOST-SUFFIX,100beatscheap.com,Apple
 HOST-SUFFIX,1monsterbeatsbydreus.com,Apple
 HOST-SUFFIX,1to1computing.com.au,Apple
