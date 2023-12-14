@@ -2,6 +2,7 @@
 #!desc=nicegram
 
 [Script]
+nicegram = type=http-request,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/nice.js,script-update-interval=0
 nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/nice.js,script-update-interval=0
 [MITM]
 hostname = %APPEND% nicegram.cloud
