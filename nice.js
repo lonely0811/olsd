@@ -1,4 +1,4 @@
-const url = $request.url;
+
 const isQX = typeof $task !== "undefined";
 var chxm1023 = JSON.parse($response.body);
 const subscriptionTest = /https:\/\/nicegram\.cloud\/api\/v\d\/user\/info/;
