@@ -201,7 +201,7 @@ class httpMethod {
 Địa chỉ]\n` +
 		  getIP() +
 		  `nútIP：${info.query}\n` +
-		  `节点ISP：${info.isp}\n` +
+		  `nútISP：${info.isp}\n` +
 		  `Vị trí nút：${getFlagEmoji(info.countryCode)}${info.country} - ${info.city}`,
 		icon: getSSID() ? 'wifi' : 'simcard',
 		'icon-color': getSSID() ? '#005CAF' : '#F9BF45',
