@@ -43,7 +43,7 @@ let content = ''
   console.log(`icon=shifts[${a}]:`+shifts[a])
 	console.log(`icon-color[${b}]:`+shifts[b])
   title = `Tốc độ mạng`
-  content = `Tốc độ tải về: ${round(Math.abs(speed * 8))} Mbps [${round(Math.abs(speed, 2), 1)} MB/s]\n测试耗时: ${round(Math.abs(duration, 2),2)}s\n网络延迟: ${pingt} ms\n执行时间: ${new Date().toTimeString().split(' ')[0]}`
+  content = `Tốc độ tải về: ${round(Math.abs(speed * 8))} Mbps [${round(Math.abs(speed, 2), 1)} MB/s]\nThời gian thử nghiệm: ${round(Math.abs(duration, 2),2)}s\nĐộ trễ mạng: ${pingt} ms\nThời gian thực hiện: ${new Date().toTimeString().split(' ')[0]}`
   if ($.isTile()) {
     await notify('Tốc độ mạng', 'bảng điều khiển', 'Truy vấn đã hoàn tất')
   } else if(!$.isPanel()) {
