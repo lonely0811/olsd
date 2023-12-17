@@ -1,10 +1,5 @@
-#!name=Network Info Panel-CN
-#!desc=详细的显示你当前的网络信息
-#!system=ios
-# @Nebulosa-Cat @Rabbit-Spec @zeaphyou
-# 更新日期：2023.03.25
-# 版本：3.1.1
-
+#!name=Network Info Panel
+#!desc=Thông tin mạng
 [Panel]
 NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
 
