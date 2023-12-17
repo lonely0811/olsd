@@ -166,11 +166,11 @@ function getNetworkInfo(retryTimes = 5, retryInterval = 1000) {
         $done({
             title: getSSID() ?? getCellularInfo(),
             content:
-                `[IP Địa chỉ]\n` +
+                `Địa chỉ IP\n` +
                 getIP() +
-                `[IP] ${info.query}\n` +
-                `[ISP] ${info.isp}\n` +
-                `[LOCATION] ${getFlagEmoji(info.countryCode)} | ${info.country} - ${info.city}`,
+                `IP: ${info.query}\n` +
+                `Nhà cung cấp: ${info.isp}\n` +
+                `Vị trí: ${getFlagEmoji(info.countryCode)} | ${info.country} - ${info.city}`,
             icon: getSSID() ? 'wifi' : 'simcard',
             'icon-color': getSSID() ? '#005CAF' : '#F9BF45',
         });
