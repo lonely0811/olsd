@@ -1,18 +1,19 @@
 /*
- * Surge 网络详情面板
+ * Surge Bảng chi tiết mạng
  * @Nebulosa-Cat
- * 详情见 README
+ * 
+Để biết chi tiết, xem README
  */
 
 /**
- * 网络请求封装为 Promise
+ * Yêu cầu mạng được gói gọn dưới dạng Promise
  * Usage: httpMethod.get(option).then(response => { logger.log(data) }).catch(error => { logger.log(error) })
  * Usage: httpMethod.post(option).then(response => { logger.log(data) }).catch(error => { logger.log(error) })
  * response: { status, headers, data }
  */
 class httpMethod {
 	/**
-	 * 回调函数
+	 * Gọi lại
 	 * @param {*} resolve
 	 * @param {*} reject
 	 * @param {*} error
@@ -29,7 +30,7 @@ class httpMethod {
 
 	/**
 	 * HTTP GET
-	 * @param {Object} option 选项
+	 * @param {Object} option Tùy chọn
 	 * @returns
 	 */
 	static get(option = {}) {
@@ -42,7 +43,7 @@ class httpMethod {
 
 	/**
 	 * HTTP POST
-	 * @param {Object} option 选项
+	 * @param {Object} option Tùy chọn
 	 * @returns
 	 */
 	static post(option = {}) {
@@ -89,7 +90,7 @@ class httpMethod {
   }
 
   function loadCarrierNames() {
-	//整理逻辑:前三码相同->后两码相同运营商->剩下的
+	//Logic sắp xếp: 3 chữ số đầu giống nhau -> 2 chữ số cuối cùng toán tử -> phần còn lại
 	return {
 	  //台湾运营商 Taiwan
 	  '466-11': '中華電信', '466-92': '中華電信',
@@ -156,7 +157,7 @@ class httpMethod {
 	  if ($network.wifi?.ssid == null && radio) {
 		cellularInfo = carrierNames[carrierId] ?
 		  `${carrierNames[carrierId]} | ${radioGeneration[radio]} - ${radio} ` :
-		  `蜂窝数据 | ${radioGeneration[radio]} - ${radio}`;
+		  `Dữ liệu di động | ${radioGeneration[radio]} - ${radio}`;
 	  }
 	}
 	return cellularInfo;
@@ -170,7 +171,7 @@ class httpMethod {
 	const { v4, v6 } = $network;
 	let info = [];
 	if (!v4 && !v6) {
-	  info = ['网路可能切换', '请手动刷新以重新获取 IP'];
+	  info = ['Mạng có thể chuyển đổi', 'Vui lòng làm mới thủ công để lấy lại IP'];
 	} else {
 	  if (v4?.primaryAddress) info.push(`v4：${v4?.primaryAddress}`);
 	  if (v6?.primaryAddress) info.push(`v6： ${v6?.primaryAddress}`);
@@ -182,12 +183,12 @@ class httpMethod {
   }
 
   /**
-   * 获取 IP 信息
-   * @param {*} retryTimes // 重试次数
-   * @param {*} retryInterval // 重试间隔 ms
+   * Nhận thông tin IP
+   * @param {*} retryTimes // số lần thử lại
+   * @param {*} retryInterval // Khoảng thời gian thử lại ms
    */
   function getNetworkInfo(retryTimes = 5, retryInterval = 1000) {
-	// 发送网络请求
+	// Gửi yêu cầu mạng
 	httpMethod.get('http://ip-api.com/json').then(response => {
 	  if (Number(response.status) > 300) {
 		throw new Error(`Request error with http status code: ${response.status}\n${response.data}`);
@@ -196,16 +197,17 @@ class httpMethod {
 	  $done({
 		title: getSSID() ?? getCellularInfo(),
 		content:
-		  `[IP 地址]\n` +
+		  `[IP 
+Địa chỉ]\n` +
 		  getIP() +
-		  `节点 IP：${info.query}\n` +
+		  `nútIP：${info.query}\n` +
 		  `节点ISP：${info.isp}\n` +
-		  `节点位置：${getFlagEmoji(info.countryCode)}${info.country} - ${info.city}`,
+		  `Vị trí nút：${getFlagEmoji(info.countryCode)}${info.country} - ${info.city}`,
 		icon: getSSID() ? 'wifi' : 'simcard',
 		'icon-color': getSSID() ? '#005CAF' : '#F9BF45',
 	  });
 	}).catch(error => {
-	  // 网络切换
+	  // chuyển mạch mạng
 	  if (String(error).startsWith("Network changed")) {
 		if (getSSID()) {
 		  $network.wifi = undefined;
@@ -213,18 +215,20 @@ class httpMethod {
 		  $network.v6 = undefined;
 		}
 	  }
-	  // 判断是否还有重试机会
+	  // Xác định xem có còn cơ hội để thử lại không
 	  if (retryTimes > 0) {
 		logger.error(error);
 		logger.log(`Retry after ${retryInterval}ms`);
-		// retryInterval 时间后再次执行该函数
+		// retryInterval Thực hiện lại chức năng sau thời gian
 		setTimeout(() => getNetworkInfo(--retryTimes, retryInterval), retryInterval);
 	  } else {
-		// 打印日志
+		// In nhật ký
 		logger.error(error);
 		$done({
-		  title: '发生错误',
-		  content: '无法获取当前网络信息\n请检查网络状态后重试',
+		  title: '
+Đã xảy ra lỗi',
+		  content: '
+Không thể lấy thông tin mạng hiện tại\nVui lòng kiểm tra trạng thái mạng và thử lại',
 		  icon: 'wifi.exclamationmark',
 		  'icon-color': '#CB1B45',
 		});
@@ -233,28 +237,32 @@ class httpMethod {
   }
 
   /**
-   * 主要逻辑，程序入口
+   * 
+Logic chính, mục nhập chương trình
    */
   (() => {
 	const retryTimes = 5;
 	const retryInterval = 1000;
-	// Surge 脚本超时时间设置为 30s
-	// 提前 500ms 手动结束进程
+	// Surge
+Thời gian chờ của tập lệnh được đặt thành 30s
+	// Kết thúc thủ công quá trình sớm 500ms
 	const surgeMaxTimeout = 29500;
-	// 脚本超时时间
-	// retryTimes * 5000 为每次网络请求超时时间（Surge 网络请求超时为 5s）
+	// 
+Hết thời gian chờ tập lệnh
+	// retryTimes * 5000 
+Thời gian chờ cho mỗi yêu cầu mạng (Thời gian chờ yêu cầu mạng tăng đột biến là 5 giây）
 	const scriptTimeout = retryTimes * 5000 + retryTimes * retryInterval;
 	setTimeout(() => {
 	  logger.log("Script timeout");
 	  $done({
-		title: "请求超时",
-		content: "连接请求超时\n请检查网络状态后重试",
+		title: "Yêu cầu đã hết thời gian",
+		content: "Yêu cầu kết nối đã hết thời gian\nVui lòng kiểm tra trạng thái mạng và thử lại",
 		icon: 'wifi.exclamationmark',
 		'icon-color': '#CB1B45',
 	  });
 	}, scriptTimeout > surgeMaxTimeout ? surgeMaxTimeout : scriptTimeout);
 
-	// 获取网络信息
+	// Nhận thông tin mạng
 	logger.log("Script start");
 	getNetworkInfo(retryTimes, retryInterval);
   })();
