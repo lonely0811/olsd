@@ -68,7 +68,7 @@ $.log(content)
 		$.log($.toStr(result))
     $.done(result)
   })
-// 通知
+
 async function notify(title, subt, desc, opts) {
   if ($.lodash_get(arg, 'notify')) {
     $.msg(title, subt, desc, opts)
