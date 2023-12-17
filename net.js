@@ -146,8 +146,8 @@ function getIP() {
     if (!v4 && !v6) {
       info = ['Mạng có thể chuyển đổi', 'Vui lòng đặt lại bảng điều khiển theo cách thủ công để cập nhật IP'];
     } else {
-      if (v4?.primaryAddress) info.push(`v4 @ ${v4?.primaryAddress}`);
-      if (v6?.primaryAddress) info.push(`v6 @ ${v6?.primaryAddress}`);
+      if (v4?.primaryAddress) info.push(`v4 : ${v4?.primaryAddress}`);
+      if (v6?.primaryAddress) info.push(`v6 : ${v6?.primaryAddress}`);
       if (v4?.primaryRouter && getSSID()) info.push(`Router v4 @ ${v4?.primaryRouter}`);
       if (v6?.primaryRouter && getSSID()) info.push(`Router IPv6 @ ${v6?.primaryRouter}`);
     }
@@ -166,7 +166,7 @@ function getNetworkInfo(retryTimes = 5, retryInterval = 1000) {
         $done({
             title: getSSID() ?? getCellularInfo(),
             content:
-                `Địa chỉ IP\n` +
+                `Địa chỉ IP:\n` +
                 getIP() +
                 `IP: ${info.query}\n` +
                 `Nhà cung cấp: ${info.isp}\n` +
