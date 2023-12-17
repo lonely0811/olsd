@@ -130,7 +130,7 @@ function getCellularInfo() {
         if ($network.wifi?.ssid == null && radio) {
             cellularInfo = carrierNames[carrierId] ?
                 `${carrierNames[carrierId]} | ${radioGeneration[radio]} - ${radio} ` :
-                `diđộng | ${radioGeneration[radio]} - ${radio}`;
+                `Dữ liệu di động | ${radioGeneration[radio]} - ${radio}`;
         }
     }
     return cellularInfo;
@@ -157,7 +157,7 @@ function getIP() {
 
 
 function getNetworkInfo(retryTimes = 5, retryInterval = 1000) {
-    // send http request
+    
     httpMethod.get('http://ip-api.com/json').then(response => {
         if (Number(response.status) > 300) {
             throw new Error(`Request error with http status code: ${response.status}\n${response.data}`);
@@ -166,11 +166,11 @@ function getNetworkInfo(retryTimes = 5, retryInterval = 1000) {
         $done({
             title: getSSID() ?? getCellularInfo(),
             content:
-                `[IP Adress]\n` +
+                `[IP Địa chỉ]\n` +
                 getIP() +
                 `[IP] ${info.query}\n` +
-                `[] ${info.isp}\n` +
-                `[] ${getFlagEmoji(info.countryCode)} | ${info.country} - ${info.city}`,
+                `[ISP] ${info.isp}\n` +
+                `[LOCATION] ${getFlagEmoji(info.countryCode)} | ${info.country} - ${info.city}`,
             icon: getSSID() ? 'wifi' : 'simcard',
             'icon-color': getSSID() ? '#005CAF' : '#F9BF45',
         });
