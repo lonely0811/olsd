@@ -1,10 +1,9 @@
 #!name=ADBVN
 #!desc= Bộ lọc việt nam - hk557
 [Rule]
-RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT-TINYGIF,update-interval=21600
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-OTA.conf,REJECT-TINYGIF,update-interval=21600
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-FB.conf,REJECT-TINYGIF,update-interval=21600
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rewrite.conf,REJECT-TINYGIF,update-interval=21600
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/adult/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
-RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/gambling/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/extensions/threat/surge-rule.conf,REJECT-TINYGIF,update-interval=21600
+DOMAIN-SET,https://raw.githubusercontent.com/lonely0811/olsd/main/surge/domanset3.conf,REJECT-TINYGIF
+DOMAIN-SET,https://raw.githubusercontent.com/lonely0811/olsd/main/surge/domanset2.conf,REJECT-TINYGIF
+RULE-SET,https://raw.githubusercontent.com/lonely0811/olsd/main/surge/keyword.conf,REJECT-TINYGIF
+DOMAIN-SET,https://raw.githubusercontent.com/lonely0811/olsd/main/surge/domanset1.conf,REJECT-TINYGIF
+DOMAIN-SUFFIX,masterfornews.com,REJECT // Added for: https://www.masterfornews.com/news/32246067/?utm_campaign=promo&utm_medium=article&utm_content=sYsAEKJrbUdbRRK12xuPU7ZxPABxbZqLiibtCBoFn*6JlEMiceqMkAxGKuJ_NtvgdzJ3_Sn*iHMrEMFcNd8uQCdZI5jVd6lkKDRvjS9yP53u2rCk3*D7pdMui3ZWsOQC3Xyi_2ZtSNG0N74ORkCNete1BAvL35UBPCUvYqg0NuiWRyzKNDwZiJeh8GqMYsMQ4px9Alj2v6vNMD0nF_GP_C7xZQpa4ztzDblf035a0ToCCudkJIihhz65iz9xR*8enwjuBXfrQA1k1EkjdWM0dbTBl9RPAncX49YE5zrwwWHoFrPvZFwk2GYIqC91ErW7G6xwAyMlaHK1C2yr6sLGn72MRfLZyF7hwVQn1X9MjRw
+RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-exceptions-rule.conf,DIRECT,update-interval=21600
