@@ -1,0 +1,16 @@
+#!desc=MyFitnessPal
+name: iTranslate
+desc: iTranslate
+http:
+  mitm:
+    - "ssl-api.itranslateapp.com"
+  script:
+    - match: ^https?:\/\/ssl-api\.itranslateapp\.com\/accounts\/.+\/(subscriptions\/verify|marketing\/consent\/status)
+      name: iTranslate
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  iTranslate:
+    url: https://raw.githubusercontent.com/chxm1023/Rewrite/main/itranslate.js
+    interval: 86400
