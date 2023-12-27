@@ -1,7 +1,7 @@
 name: IP
 desc: IP
 tiles:
-  - name: IPxinxi
+  - name: IP
     icon: 'mappin.and.ellipse'
     backgroundColor: '#f50505'
 script-providers:
