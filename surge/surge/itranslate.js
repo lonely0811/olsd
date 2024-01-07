@@ -1,5 +1,5 @@
 let obj= {
-  "purchases": [
+  "subscriptions": [
     {
       "product_id": "com.itranslate.pro.yearly",
       "is_trial_period": false,
