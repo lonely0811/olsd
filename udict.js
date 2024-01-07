@@ -1,4 +1,4 @@
-{
+let obj= {
   "code": 0,
   "data": {
     "originalTransactionId": "190001858611658",
