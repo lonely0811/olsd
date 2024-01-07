@@ -18,7 +18,7 @@
     "webOrderLineItemId": "190000847324937",
     "purchaseDate": 1704598458000,
     "requestCountry": "VN",
-    "trial": true,
+    "trial": false,
     "md5": "fb5688f85a5c8db28f2d4a8c4000294c",
     "requestIp": "103.151.241.5",
     "statusCode": 0,
