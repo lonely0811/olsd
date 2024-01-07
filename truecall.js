@@ -5,8 +5,9 @@ function findUrl(_reg) {
 }
 const features = [
   { id: "spam_blocking", rank: -2147483648, status: "Included" },
-  { id: "live_caller_id", rank: -2147483648, status: "Included" },
-  { id: "no_ads", rank: 1, status: "Included" },
+  { id: "caller_id", rank: -2147483648, status: "Included" },
+  { id: "siri_search", rank: 1, status: "Included" },
+  { id: "no_ads", rank: 2, status: "Included" },
   { id: "call_assistant", rank: 2, status: "Included" },
   { id: "extended_spam_blocking", rank: 3, status: "Included" },
   { id: "who_viewed_my_profile", rank: 4, status: "Included" },
