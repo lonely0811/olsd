@@ -1,5 +1,5 @@
-let obj= {
-  "code": 0,
+var obj = JSON.parse($response.body);
+obj= {
   "data": {
     "originalTransactionId": "190001858611658",
     "localCode": "VN",
