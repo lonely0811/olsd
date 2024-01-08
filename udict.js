@@ -29,7 +29,8 @@ let obj= {
     "autoRenewStatus": "STATUS_OFF",
     "subscriptionStatus": "ENABLED",
     "idfa": "3FCB8B61-4008-4D21-B657-24E90B996964"
-  },
-  "status": 0,
+  };
+  { "status": 0,
   "msg": "success"
-}
+};
+$done({body: JSON.stringify(obj)});
