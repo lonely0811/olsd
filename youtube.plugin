@@ -4,7 +4,6 @@
 #!homepage = https://whatshub.top
 #!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 [URL Rewrite]
-(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) 302 $1$2$3
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
 ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
 ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
