@@ -1,5 +1,5 @@
 #!desc= TrueCaller
-name: Speedtest master
+name: TrueCaller
 desc: Gold Sub
 http:
   mitm:
