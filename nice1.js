@@ -1,53 +1,17 @@
-if (typeof $request !== 'undefined') {
-  const lowerCaseRequestHeaders = Object.fromEntries(
-    Object.entries($request.headers).map(([k, v]) => [k.toLowerCase(), v])
-  );
+/*
 
-  $request.headers = new Proxy(lowerCaseRequestHeaders, {
-    get: function (target, propKey, receiver) {
-      return Reflect.get(target, propKey.toLowerCase(), receiver);
-    },
-    set: function (target, propKey, value, receiver) {
-      return Reflect.set(target, propKey.toLowerCase(), value, receiver);
-    },
-  });
-}
-if (typeof $response !== 'undefined') {
-  const lowerCaseResponseHeaders = Object.fromEntries(
-    Object.entries($response.headers).map(([k, v]) => [k.toLowerCase(), v])
-  );
+Nicegram 1.4.7
 
-  $response.headers = new Proxy(lowerCaseResponseHeaders, {
-    get: function (target, propKey, receiver) {
-      return Reflect.get(target, propKey.toLowerCase(), receiver);
-    },
-    set: function (target, propKey, value, receiver) {
-      return Reflect.set(target, propKey.toLowerCase(), value, receiver);
-    },
-  });
-}
+[rewrite_local]
+https://nicegram.cloud/api/v6/user/info url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/main/Nicegram.js
 
-const url = $request.url;
-const isQX = typeof $task !== "undefined";
-var chxm1023 = JSON.parse($response.body);
-const subscriptionTest = /https:\/\/nicegram\.cloud\/api\/v\d\/user\/info/;
-const premiumTest = /https:\/\/restore-access\.indream\.app\/restoreAccess/;
+[mitm] 
+hostname = nicegram.cloud
 
-if (subscriptionTest.test(url)) {
-  chxm1023.data.user = {
-    ...chxm1023.data.user,
-    subscription: true,
-    store_subscription: true,
-    lifetime_subscription: true
-  };
-}
+**/
 
-if (premiumTest.test(url)) {
-  chxm1023["data"] = {"premiumAccess": true};
-}
-
-function finalizeResponse(content) {
-  return { status: isQX ? "HTTP/1.1 200 OK" : 200, headers: $response.headers, body: JSON.stringify(content) };
-}
-
-$done(isQX ? finalizeResponse(chxm1023) : chxm1023);
+var Q = JSON.parse($response.body);
+Q.data.user.lifetime_subscription = true;
+Q.data.user.store_subscription = true;
+Q.data.user.subscription = true;
+$done({body : JSON.stringify(Q)});
