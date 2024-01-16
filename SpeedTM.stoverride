@@ -1,0 +1,17 @@
+#!desc=Speedtest master
+#!icon=https://github.com/Koolson/Qure/raw/master/IconSet/Color/Speedtest.png
+name: Speedtest master
+desc: Remove ads, Pro - HK
+http:
+  mitm:
+    - "iap.etm.tech"
+  script:
+    - match: https:\/\/iap\.etm\.tech\/receipts
+      name: Speedtest
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  Speedtest:
+    url: https://raw.githubusercontent.com/lonely0811/olsd/main/speedtest.js
+    interval: 86400
