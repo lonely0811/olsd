@@ -4,4 +4,4 @@
 [Script]
 Nicegram = type=http-response,pattern=^https?:\/\/nicegram\.cloud\.indream\.app\/restoreAccess,,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/nice.js,script-update-interval=0
 [MITM]
-hostname = %APPEND% nicegram.cloud, restore-access.indream.app
+hostname = %APPEND% nicegram.cloud
