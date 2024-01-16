@@ -1,0 +1,16 @@
+#!desc= TrueCaller
+name: Speedtest master
+desc: Gold Sub
+http:
+  mitm:
+    - "premium*.truecaller.com"
+  script:
+    - match: https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple)
+      name: TrueCaller
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  TrueCaller:
+    url: https://raw.githubusercontent.com/lonely0811/Surge/main/js/truecall.js
+    interval: 86400
