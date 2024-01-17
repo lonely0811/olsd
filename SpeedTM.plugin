@@ -2,6 +2,6 @@
 #!desc=Remove ads, Pro - HK
 #!icon=https://github.com/Koolson/Qure/raw/master/IconSet/Color/Speedtest.png
 [MITM]
-hostname = iap.etm.tech
+hostname = %APPEND% iap.etm.tech
 [Script]
 http-response ^https:\/\/iap\.etm\.tech\/receipts requires-body=1,script-path=cript-path=https://raw.githubusercontent.com/lonely0811/olsd/main/speedtest.js
