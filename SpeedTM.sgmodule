@@ -1,6 +1,6 @@
 #!name=Speedtest master
 #!desc=Remove ads, Pro - HK
 [MITM] 
-hostname = iap.etm.tech
+hostname = %APPEND% iap.etm.tech
 [Script]
 SpeedTest=type=http-response,pattern=^https:\/\/iap\.etm\.tech\/receipts,requires-body=1,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/speedtest.js
