@@ -3,7 +3,7 @@ name: TrueCaller
 desc: Gold Sub
 http:
   mitm:
-    - "premium*.truecaller.com"
+    - "%APPEND% premium*.truecaller.com"
   script:
     - match: https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple)
       name: TrueCaller
