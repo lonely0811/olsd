@@ -1,0 +1,73 @@
+policy_groups:
+- load_balance:
+    name: BALANCE
+    policies:
+    - SERVER
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+- auto_test:
+    name: AUTO
+    policies:
+    - SERVER
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- external:
+    name: SERVER
+    type: select
+    urls:
+    - https://vip.viefast.vn/api/v1/client/subscribe?token=5edd25d11e7455cf615dfa796a3511ce
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+    hidden: false
+rules:
+- ip_cidr:
+    match: 192.168.0.0/16
+    policy: DIRECT
+- ip_cidr:
+    match: 10.0.0.0/8
+    policy: DIRECT
+- ip_cidr:
+    match: 127.0.0.0/8
+    policy: DIRECT
+- ip_cidr:
+    match: 172.16.0.0/12
+    policy: DIRECT
+- ip_cidr:
+    match: 192.128.0.0/16
+    policy: DIRECT
+- ip_cidr:
+    match: 224.0.0.0/24
+    policy: DIRECT
+- geoip:
+    match: CN
+    policy: DIRECT
+- default:
+    policy: SERVER
+url_rewrites:
+- match: ^https:\/\/[\w-]+\.googlevideo\.com\/initplayback\?.+&oad
+  location: reject-200
+  status_code: 302
+scriptings:
+- http_response:
+    name: TRUECALL
+    match: ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple)?
+    script_url: https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
+    body_required: true
+- http_response:
+    name: YOUTUBERP
+    match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\?
+    script_url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.beta.js
+    body_required: true
+    binary_body: true
+- http_request:
+    name: YOUTUBERQ
+    match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\?
+    script_url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
+    body_required: true
+    binary_body: true
+mitm:
+  enabled: true
+  ca_p12: egern.p12
+  ca_passphrase: egern
+  hostnames:
+  - premium*.truecaller.com
+  - rr*.googlevideo.com
+  - youtubei.googleapis.com
+  - '*.googlevideo.com'
