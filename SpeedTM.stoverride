@@ -4,7 +4,7 @@ name: Speedtest master
 desc: Remove ads, Pro - HK
 http:
   mitm:
-    - "iap.etm.tech"
+    - iap.etm.tech
   script:
     - match: https:\/\/iap\.etm\.tech\/receipts
       name: Speedtest
