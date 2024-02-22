@@ -1,0 +1,16 @@
+#!desc= HK
+name: Nicegram premium
+desc: Active ver 1.4.7
+http:
+  mitm:
+    - nicegram.cloud
+  script:
+    - match: ^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess)
+      name: Nicegram
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  Nicegram:
+    url: https://github.com/lonely0811/olsd/raw/main/nice1.js
+    interval: 86400
