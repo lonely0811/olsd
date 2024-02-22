@@ -1,6 +1,6 @@
 #!desc= HK
-name: Nicegram
-desc: Ative premium 1.4.7
+name: Nicegram premium
+desc: Active ver 1.4.7
 http:
   mitm:
     - nicegram.cloud
