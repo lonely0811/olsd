@@ -1,0 +1,16 @@
+!name = Youtube
+#!desc = Test1
+#!author = Maasea fix loon hk
+#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+[URL Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
+[Script]
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\? requires-body=1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.beta.js
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\? requires-body=1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
+
+[MITM]
+hostname = -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
+
