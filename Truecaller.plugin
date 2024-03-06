@@ -4,6 +4,6 @@
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bamboo.png
 
 [Script]
-http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) requires-body=1,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
+http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
 [MITM] 
 hostname =premium*.truecaller.com
