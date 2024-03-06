@@ -1,0 +1,9 @@
+#!name=TrueCaller
+#!desc=Active premium Truecaller
+#!author= HK
+#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/documents.png
+
+[Script]
+http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) requires-body=1,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js
+[MITM] 
+hostname = %APPEND% premium*.truecaller.com
