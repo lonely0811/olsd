@@ -1,6 +1,5 @@
-#!name = Youtubeloon
-#!desc = Test2
-#!author = Maasea fix loon hk
+#!name = Youtube
+#!desc = REMOVE ADS
 #!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 [URL Rewrite]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
