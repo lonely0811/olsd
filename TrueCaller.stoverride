@@ -1,6 +1,6 @@
 name: TrueCaller
 desc: Gold Sub
-#icon:https://github.com/lonely0811/olsd/raw/main/IMG_0188.png
+icon: https://github.com/lonely0811/olsd/raw/main/IMG_0188.png
 http:
   mitm:
     - "premium*.truecaller.com"
