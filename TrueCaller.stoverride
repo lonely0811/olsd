@@ -1,6 +1,6 @@
-#!desc= TrueCaller
 name: TrueCaller
 desc: Gold Sub
+icon:
 http:
   mitm:
     - "premium*.truecaller.com"
