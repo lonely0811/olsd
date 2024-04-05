@@ -1,7 +1,7 @@
 #!name=TrueCaller
 #!desc=Active premium Truecaller
 #!author= HK
-#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bamboo.png
+#!icon: https://github.com/lonely0811/olsd/raw/main/IMG_0188.png
 
 [Script]
 http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) script-path = https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js, requires-body=true
