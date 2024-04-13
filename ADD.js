@@ -50,7 +50,7 @@ function operator(proxies = []) {
           } else if (network === 'h2') {
             _.set(p, 'h2-opts.host', array ? [host] : host)
           } else if (network === 'grpc') {
-            _.set(p, 'grpc-opts.headers.Host', host)
+            _.set(p, 'grpc-opts.Host', array ? [host] : host)
           } else if (network === 'http') {
             _.set(p, 'http-opts.headers.Host', array ? [host] : host)
           } else {
