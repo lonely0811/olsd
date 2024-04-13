@@ -15,7 +15,7 @@ function operator(proxies = []) {
     const defaultMethod = _.get($arguments, 'defaultMethod') || 'GET'
     let method = _.get($arguments, 'method')
     const array = _.get($arguments, 'array')
-    const defaultNetwork = _.get($arguments, 'defaultNetwork') || 'http'
+    const defaultNetwork = _.get($arguments, 'defaultNetwork') || 'grpc'
     
     let network = _.get(p, 'network')
     const type = _.get(p, 'type')
