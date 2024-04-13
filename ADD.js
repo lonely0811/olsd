@@ -46,7 +46,7 @@ function operator(proxies = []) {
 
         if (!isReality) {
           if (network === 'grpc') {
-            _.set(p, ''grpc-opts.Host', array ? [host] : host)
+            _.set(p, 'grpc-opts.Host', array ? [host] : host)
           } else if (network === 'h2') {
             _.set(p, 'h2-opts.host', array ? [host] : host)
           } else if (network === 'grpc') {
