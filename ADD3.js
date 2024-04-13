@@ -6,7 +6,6 @@ function operator(proxies = []) {
     const hostPrefix = _.get($arguments, 'hostPrefix')
     const hostSuffix = _.get($arguments, 'hostSuffix')
     const array = _.get($arguments, 'array')
-    const defaultNetwork = _.get($arguments, 'defaultNetwork') || 'grpc'
     
     let network = _.get(p, 'network')
     const type = _.get(p, 'type')
