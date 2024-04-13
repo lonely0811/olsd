@@ -47,12 +47,12 @@ function operator(proxies = []) {
         if (!isReality) {
           if (network === 'grpc') {
             _.set(p, 'grpc-opts.Host', array ? [host] : host)
-          } else if (network === 'h2') {
+          } else if (network === 'grpc') {
             _.set(p, 'h2-opts.host', array ? [host] : host)
           } else if (network === 'grpc') {
             _.set(p, 'grpc-opts.Host', array ? [host] : host)
-          } else if (network === 'http') {
-            _.set(p, 'http-opts.headers.Host', array ? [host] : host)
+          } else if (network === 'grpc') {
+            _.set(p, 'http-opts.Host', array ? [host] : host)
           } else {
             // 其他? 谁知道是数组还是字符串...先按字符串吧
             _.set(p, `${network}-opts.Host`, array ? [host] : host)
