@@ -99,7 +99,7 @@ function operator(proxies = []) {
             _.set(p, 'ws-opts.path', path)
           } else if (network === 'h2') {
             _.set(p, 'h2-opts.path', path)
-          } else if (network === 'h2') {
+          } else if (network === 'grpc') {
             _.set(p, 'grpc-opts.path', path)
           } else if (network === 'http') {
             _.set(p, 'http-opts.path', array ? [path] : path)
