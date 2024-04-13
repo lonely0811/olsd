@@ -60,11 +60,11 @@ function operator(proxies = []) {
         }
       }
 
-      if (network === 'http') {
+      if (network === 'grpc') {
         if (!_.get(p, 'http-opts.method') && !method) {
           method = defaultMethod
         }
-        _.set(p, 'http-opts.method', method)
+        _.set(p, 'grpc-opts.method', method)
       }
     
       if (port) {
@@ -77,8 +77,8 @@ function operator(proxies = []) {
         }
       }
       if (!isReality) {
-        if (network === 'http') {
-          let currentPath = _.get(p, 'http-opts.path')
+        if (network === 'grpc') {
+          let currentPath = _.get(p, 'grpc-opts.path')
           if (_.isArray(currentPath)) {
             currentPath = _.find(currentPath, i => _.startsWith(i, '/'))
           } else {
@@ -95,14 +95,14 @@ function operator(proxies = []) {
           if (pathSuffix) {
             _.set(p, 'name', `${p.name}${pathSuffix}`)
           }
-          if (network === 'ws') {
-            _.set(p, 'ws-opts.path', path)
-          } else if (network === 'h2') {
-            _.set(p, 'h2-opts.path', path)
+          if (network === 'grpc') {
+            _.set(p, 'grpc-opts.path', path)
           } else if (network === 'grpc') {
             _.set(p, 'grpc-opts.path', path)
-          } else if (network === 'http') {
-            _.set(p, 'http-opts.path', array ? [path] : path)
+          } else if (network === 'grpc') {
+            _.set(p, 'grpc-opts.path', path)
+          } else if (network === 'grpc') {
+            _.set(p, 'grpc-opts.path', array ? [path] : path)
           } else {
             // 其他? 谁知道是数组还是字符串...先按字符串吧
             _.set(p, `${network}-opts.path`, path)
