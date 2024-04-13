@@ -46,7 +46,7 @@ function operator(proxies = []) {
             _.set(p, 'http-opts.headers.Host', array ? [host] : host)
           } else {
             // 其他? 谁知道是数组还是字符串...先按字符串吧
-            _.set(p, `${network}-opts.headers.Host`, host)
+            _.set(p, `${network}-opts.headers.Host`, array ? [host] : host)
           }
         }
       }
