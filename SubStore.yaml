@@ -1,0 +1,18 @@
+scriptings:
+- http_request:
+    name: Sub-Store Core
+    match: ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info)))
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js
+    body_required: true
+- http_request:
+    name: Sub-Store Simple
+    match: ^https?:\/\/sub\.store
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js
+    body_required: true
+- schedule:
+    name: SYNC
+    cron: 55 23 * * *
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+mitm:
+  hostnames:
+  - sub.store
