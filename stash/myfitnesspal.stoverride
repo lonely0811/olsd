@@ -1,16 +1,30 @@
-#!desc=MyFitnessPal
-name: MyFitnessPal
-desc: MyFitnessPal
+name:YouTube Premium
+desc: Fake Premium Youtube
+icon:https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
+
 http:
   mitm:
-    - "premium-api.myfitnesspal.com"
+    - "*.googlevideo.com"
+    - "youtubei.googleapis.com"
+  url-rewrite:
+    - >-
+      ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-dict
   script:
-    - match: https://premium-api.myfitnesspal.com/v3/subscriptions/MFP/*
-      name: MyFitnessPal1
+# YouTube去广告
+    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)
+      name: "YouTube请求_21"
+      type: request
+      require-body: true
+      binary-mode: true
+    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)
+      name: "YouTube响应_22"
       type: response
       require-body: true
-      timeout: 10
+      binary-mode: true
 script-providers:
-  MyFitnessPal1:
-    url: https://raw.githubusercontent.com/Marol62926/MarScrpt/main/myFitnessPal.js
+  "YouTube请求_21":
+    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_request.js
+    interval: 86400
+  "YouTube响应_22":
+    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_response.js
     interval: 86400
