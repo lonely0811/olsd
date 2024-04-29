@@ -1,6 +1,6 @@
-name:YouTube Premium
-desc:Premium Youtube - HK
-icon:https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
+name: YouTube Premium
+desc: Premium Youtube - HK
+icon: https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
 http:
   mitm:
     - "*.googlevideo.com"
