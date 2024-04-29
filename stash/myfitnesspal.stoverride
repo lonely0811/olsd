@@ -1,30 +1,29 @@
 name:YouTube Premium
-desc: Fake Premium Youtube
+desc:Premium Youtube - HK
 icon:https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
-
 http:
   mitm:
     - "*.googlevideo.com"
     - "youtubei.googleapis.com"
-  url-rewrite:
-    - >-
-      ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-dict
   script:
-# YouTube去广告
-    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)
-      name: "YouTube请求_21"
-      type: request
-      require-body: true
-      binary-mode: true
     - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)
-      name: "YouTube响应_22"
+      name: YouTuberesponse
       type: response
       require-body: true
       binary-mode: true
+      timeout: 10
+    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)
+      name: YouTuberequest
+      type: request
+      require-body: true
+      binary-mode: true
+      timeout: 10
+  rewrite:
+    - ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-dict
 script-providers:
-  "YouTube请求_21":
-    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_request.js
-    interval: 86400
-  "YouTube响应_22":
+  YouTuberesponse:
     url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_response.js
+    interval: 86400
+  YouTuberequest:
+    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_request.js
     interval: 86400
