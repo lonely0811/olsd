@@ -19,7 +19,7 @@ http:
       binary-mode: true
       timeout: 10
   rewrite:
-    - ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-dict
+    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
 script-providers:
   YouTuberesponse:
     url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_response.js
