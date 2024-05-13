@@ -1,5 +1,6 @@
 #!name = YouTube ADB
-#!desc = Block Ads Youtube 
+#!desc = Block Ads Youtube
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
 #!select = Ẩn nút tải lên, true, false
 #!select = Ẩn nút chọn, true, false
 #!select = Ngôn ngữ lời bài hát, vi, zh-Hans, zh-Hant, ja, ko, en, off
