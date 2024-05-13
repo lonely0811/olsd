@@ -1,0 +1,22 @@
+#!name = YouTube ADB
+#!desc = Block Ads Youtube 
+#!select = Ẩn nút tải lên, true, false
+#!select = Ẩn nút chọn, true, false
+#!select = Ngôn ngữ lời bài hát, vi, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = Ngôn ngữ phụ đề, vi, zh-Hans, zh-Hant, ja, ko, en, off
+#select = Bật gỡ lỗi, true, false
+
+# [Rule]
+AND, ((DOMAIN-SUFFIX, googlevideo.com), (DEST-PORT,443), (PROTOCOL, UDP)), REJECT
+AND, ((DOMAIN, youtubei.googleapis.com), (DEST-PORT,443), (PROTOCOL, UDP)), REJECT
+
+[Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-dict
+
+[Script]
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-path = https://github.com/lonely0811/olsd/raw/main/youtube.request.preview.js, requires-body = true, binary-body-mode = true, tag = YouTubeRQ
+
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-path = https://github.com/lonely0811/olsd/raw/main/youtube.response.preview.js, requires-body = true, binary-body-mode = true, tag = YouTubeRP
+
+[Mitm]
+hostname = *.googlevideo.com, youtubei.googleapis.com
