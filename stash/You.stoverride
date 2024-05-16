@@ -2,28 +2,49 @@ name: YouTube Premium
 desc: Premium Youtube - HK
 icon: https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
 http:
+
   mitm:
     - "*.googlevideo.com"
     - "youtubei.googleapis.com"
+    - "-redirector*.googlevideo.com"
+    - "s.youtube.com"
+    - "www.youtube.com"
+
+  url-rewrite:
+    - >-
+      (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+    - >-
+      ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+    - >-
+      ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
+    - >-
+      ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
+    - >-
+      ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+    - >-
+      ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
+
   script:
-    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)
-      name: YouTuberesponse
-      type: response
-      require-body: true
-      binary-mode: true
-      timeout: 10
-    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)
-      name: YouTuberequest
+    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch)
+      name: "youtube.request"
       type: request
       require-body: true
+      max-size: -1
       binary-mode: true
-      timeout: 10
-  rewrite:
-    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+
+    - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
+      name: "youtube.response"
+      type: response
+      require-body: true
+      max-size: -1
+      binary-mode: true
+      argument: |-
+        {"lyricLang":"{{{歌词翻译语言}}}","captionLang":"{{{字幕翻译语言}}}","blockUpload":{{{屏蔽上传按钮}}},"blockImmersive":{{{屏蔽选段按钮}}},"debug":{{{启用调试模式}}}}
+
 script-providers:
-  YouTuberesponse:
-    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_response.js
+  "youtube.request":
+    url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.preview.js
     interval: 86400
-  YouTuberequest:
-    url: https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads_request.js
+  "youtube.response":
+    url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js
     interval: 86400
